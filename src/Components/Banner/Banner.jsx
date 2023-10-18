@@ -12,7 +12,7 @@ const Banner = () => {
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             Welcome to Our Foodism
           </h1>
-          <p className="text-lg mb-6">Explore Amazing Foods </p>
+          <p className="text-lg mb-6">Explore Amazing Food Brands </p>
         </div>
       </div>
     </div>

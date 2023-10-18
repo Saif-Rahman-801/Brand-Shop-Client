@@ -4,7 +4,7 @@ import "./Navbar.css";
 
 const Navbar = () => {
   return (
-    <div className="rounded-lg bg-[burlywood]">
+    <div className=" bg-[burlywood]">
       <div className="navbar ">
         <div className="navbar-start">
           <div className="dropdown">
