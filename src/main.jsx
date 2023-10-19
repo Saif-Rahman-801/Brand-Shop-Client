@@ -1,21 +1,18 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React from "react";
+import ReactDOM from "react-dom/client";
 // eslint-disable-next-line no-unused-vars
-import App from './App.jsx'
-import './index.css'
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import Root from './Components/Root/Root.jsx';
-import Error from './Components/ErrorPage/Error.jsx';
-import Home from './Components/Home/Home.jsx';
-import AddProducts from './Components/AddProducts/AddProducts.jsx';
-import Card from './Components/Card/Card.jsx';
-import Login from './Components/Login/Login.jsx';
-import Register from './Components/Register/Register.jsx';
-import Blog from './Components/Blog/Blog.jsx';
-
+import App from "./App.jsx";
+import "./index.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Root from "./Components/Root/Root.jsx";
+import Error from "./Components/ErrorPage/Error.jsx";
+import Home from "./Components/Home/Home.jsx";
+import AddProducts from "./Components/AddProducts/AddProducts.jsx";
+import Card from "./Components/Card/Card.jsx";
+import Login from "./Components/Login/Login.jsx";
+import Register from "./Components/Register/Register.jsx";
+import Blog from "./Components/Blog/Blog.jsx";
+import BrandProduct from "./Components/BrandProduct/BrandProduct.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,34 +23,40 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch("http://localhost:5000/brands")
+        loader: () => fetch("http://localhost:5000/brands"),
       },
       {
         path: "/addProducts",
-        element: <AddProducts />
+        element: <AddProducts />,
       },
       {
         path: "/card",
-        element: <Card />
+        element: <Card />,
       },
       {
         path: "/login",
-        element: <Login />
+        element: <Login />,
       },
       {
         path: "/register",
-        element: <Register />
+        element: <Register />,
       },
       {
         path: "/blog",
-        element: <Blog />
-      }
-    ]
+        element: <Blog />,
+      },
+      {
+        path: "/brand/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/brand/${params.id}`),
+        element: <BrandProduct />,
+      },
+    ],
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);

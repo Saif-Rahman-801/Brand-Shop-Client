@@ -1,16 +1,19 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const BrandCards = ({ data }) => {
-  const { title, img } = data;
+  const { title, img, id } = data;
   return (
-    <div>
-      <div className="max-w-xs bg-white shadow-lg rounded-lg overflow-hidden m-4 h-64">
-        <img className="w-full h-44 object-cover" src={img} alt={title} />
-        <div className="px-6 py-4">
-          <h2 className="font-bold text-xl mb-2">{title}</h2>
+    <Link to={`/brand/${id}`}>
+      <div>
+        <div className="max-w-xs bg-white shadow-lg rounded-lg overflow-hidden m-4 h-64">
+          <img className="w-full h-44 object-cover" src={img} alt={title} />
+          <div className="px-6 py-4">
+            <h2 className="font-bold text-xl mb-2">{title}</h2>
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

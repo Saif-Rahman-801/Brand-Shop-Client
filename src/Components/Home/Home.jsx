@@ -8,9 +8,9 @@ const Home = () => {
   return (
     <div>
       <Banner />
-      <div className="grid grid-cols-3">
-        {brandsData.map((data, index) => (
-          <BrandCards key={index} data={data} />
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        {brandsData.map((data) => (
+          <BrandCards key={data.id} data={data} />
         ))}
       </div>
     </div>
