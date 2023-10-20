@@ -3,7 +3,14 @@ import { Link } from "react-router-dom";
 import { AuthProvider } from "../../Context/AuthContext";
 
 const Register = () => {
-  const { handleEmailPassReg, handleProfileUpdate } = useContext(AuthProvider);
+  const { handleEmailPassReg, handleProfileUpdate, googleSubmit } =
+    useContext(AuthProvider);
+
+  const handleGoogleSubmit = () => {
+    googleSubmit()
+      .then((result) => console.log(result.user))
+      .catch((error) => console.log(error));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -11,7 +18,8 @@ const Register = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password, name);
+    const image = form.image.value;
+    console.log(email, password, name, image);
 
     // register with email pass
     handleEmailPassReg(email, password)
@@ -19,7 +27,7 @@ const Register = () => {
         // Signed up
         const user = userCredential.user;
         console.log(user);
-        handleProfileUpdate(user, name)
+        handleProfileUpdate(user, name, image)
           .then(() => {
             // Profile updated!
             // ...
@@ -27,7 +35,7 @@ const Register = () => {
           .catch((error) => {
             console.log(error);
           });
-          form.reset()
+        form.reset();
       })
       .catch((error) => {
         console.log(error);
@@ -52,6 +60,20 @@ const Register = () => {
                 type="name"
                 id="name"
                 name="name"
+                className="mt-1 p-2 block w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+              />
+            </div>
+            <div className="mb-4">
+              <label
+                htmlFor="ImageUrl"
+                className="block text-sm font-medium text-gray-600"
+              >
+                ImageUrl
+              </label>
+              <input
+                type="text"
+                id="ImageUrl"
+                name="image"
                 className="mt-1 p-2 block w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
               />
             </div>
@@ -92,6 +114,7 @@ const Register = () => {
               Register
             </button>
             <button
+              onClick={handleGoogleSubmit}
               type="submit"
               className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-700 focus:outline-none focus:ring focus:border-blue-300 my-3"
             >

@@ -1,8 +1,25 @@
 import { IoFastFoodSharp } from "react-icons/io5";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
+import { useContext } from "react";
+import { AuthProvider } from "../../Context/AuthContext";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
+  const { handleLogOut, user } = useContext(AuthProvider);
+
+  const onLogOut = () => {
+    handleLogOut()
+      .then(() => {
+        // Sign-out successful.
+        toast("Log out successful");
+      })
+      .catch((error) => {
+        // An error happened.
+        console.log(error);
+      });
+  };
+
   return (
     <div className=" bg-[burlywood]">
       <div className="navbar ">
@@ -28,7 +45,7 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
-              <NavLink to="/" >
+              <NavLink to="/">
                 <li>
                   <a>Home</a>
                 </li>
@@ -77,10 +94,10 @@ const Navbar = () => {
               </li>
             </NavLink>
             <NavLink to="/cart">
-                <li>
-                  <a>My Cart</a>
-                </li>
-              </NavLink>
+              <li>
+                <a>My Cart</a>
+              </li>
+            </NavLink>
             <NavLink to="/login">
               <li>
                 <a>Login</a>
@@ -99,7 +116,19 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Login/user credential</a>
+          {user ? (
+            <div className="flex items-center gap-3">
+              <img className="w-[30px] rounded-full" src={user.photoURL} alt="" />
+              <p>{user.displayName}</p>
+              <button className="btn" onClick={onLogOut}>
+                Log out
+              </button>
+            </div>
+          ) : (
+            <Link to="/login">
+              <button className="btn">Login</button>
+            </Link>
+          )}
         </div>
       </div>
     </div>
