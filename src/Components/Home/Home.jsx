@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import Banner from "../Banner/Banner";
 import BrandCards from "../BrandCards/BrandCards";
+import Footer from "../Footer/Footer";
 
 const Home = () => {
   const brandsData = useLoaderData();
@@ -12,6 +13,9 @@ const Home = () => {
         {brandsData.map((data) => (
           <BrandCards key={data._id} data={data} />
         ))}
+      </div>
+      <div className="relative bottom-0">
+        <Footer />
       </div>
     </div>
   );

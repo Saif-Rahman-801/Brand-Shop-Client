@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const ProductDetails = () => {
   const data = useLoaderData();
@@ -21,6 +22,9 @@ const ProductDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data)
+        if(data.acknowledged){
+            toast.success("Product added successfully")
+        }
     });
   };
 

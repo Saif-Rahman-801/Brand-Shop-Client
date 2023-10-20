@@ -38,9 +38,9 @@ const Navbar = () => {
                   <a>Add Product</a>
                 </li>
               </NavLink>
-              <NavLink to="/card">
+              <NavLink to="/cart">
                 <li>
-                  <a>My Card</a>
+                  <a>My Cart</a>
                 </li>
               </NavLink>
               <NavLink to="/login">
@@ -76,11 +76,11 @@ const Navbar = () => {
                 <a>Add Product</a>
               </li>
             </NavLink>
-            <NavLink to="/card">
-              <li>
-                <a>My Card</a>
-              </li>
-            </NavLink>
+            <NavLink to="/cart">
+                <li>
+                  <a>My Cart</a>
+                </li>
+              </NavLink>
             <NavLink to="/login">
               <li>
                 <a>Login</a>

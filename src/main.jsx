@@ -8,13 +8,15 @@ import Root from "./Components/Root/Root.jsx";
 import Error from "./Components/ErrorPage/Error.jsx";
 import Home from "./Components/Home/Home.jsx";
 import AddProducts from "./Components/AddProducts/AddProducts.jsx";
-import Card from "./Components/Card/Card.jsx";
 import Login from "./Components/Login/Login.jsx";
 import Register from "./Components/Register/Register.jsx";
 import Blog from "./Components/Blog/Blog.jsx";
 import BrandProduct from "./Components/BrandProduct/BrandProduct.jsx";
 import AuthContext from "./Context/AuthContext.jsx";
 import ProductDetails from "./Components/BrandProduct/ProductDetails.jsx";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Cart from "./Components/Cart/Cart.jsx";
 
 const router = createBrowserRouter([
   {
@@ -32,8 +34,9 @@ const router = createBrowserRouter([
         element: <AddProducts />,
       },
       {
-        path: "/card",
-        element: <Card />,
+        path: "/cart",
+        element: <Cart />,
+        loader: () => fetch("http://localhost:5000/cart"),
       },
       {
         path: "/login",
@@ -55,8 +58,9 @@ const router = createBrowserRouter([
       },
       {
         path: "/products/:id",
-        loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`),
-        element: <ProductDetails />
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/products/${params.id}`),
+        element: <ProductDetails />,
       },
     ],
   },
@@ -66,6 +70,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthContext>
       <RouterProvider router={router} />
+      <ToastContainer />
     </AuthContext>
   </React.StrictMode>
 );
