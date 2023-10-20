@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthProvider } from "../../Context/AuthContext";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const { handleEmailPassReg, handleProfileUpdate, googleSubmit } =
@@ -21,10 +22,27 @@ const Register = () => {
     const image = form.image.value;
     console.log(email, password, name, image);
 
+    const regexSpecialLetter = /[!@#$%^&*(),.?":{}|<>]/;
+    const regexCapital = /[A-Z]/;
+
+    if (password.length < 6) {
+      toast.error(
+        "Password must be at least 6 character or more than 6 character"
+      );
+      return;
+    } else if (regexSpecialLetter.test(password) === false) {
+      toast.error("Password must contain special character");
+      return;
+    } else if (regexCapital.test(password) === false) {
+      toast.error("Password must contain Capital character");
+      return;
+    }
+
     // register with email pass
     handleEmailPassReg(email, password)
       .then((userCredential) => {
         // Signed up
+        toast.success("Registration successful")
         const user = userCredential.user;
         console.log(user);
         handleProfileUpdate(user, name, image)
