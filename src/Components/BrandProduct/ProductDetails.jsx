@@ -4,6 +4,26 @@ const ProductDetails = () => {
   const data = useLoaderData();
   console.log(data);
 
+  const handleAddToCart = () => {
+    const productName = data.productName;
+    const productPrice = data.price;
+    const productInfo = {
+      productName,
+      productPrice,
+    };
+    fetch("http://localhost:5000/cart", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(productInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+    });
+  };
+
   return (
     <div className="my-10 container mx-auto flex flex-col-reverse gap-3 items-center">
       <div className="text-center">
@@ -12,7 +32,10 @@ const ProductDetails = () => {
         <button className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-5">
           Update
         </button>
-        <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-5 mx-5">
+        <button
+          onClick={handleAddToCart}
+          className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-5 mx-5"
+        >
           Add to cart
         </button>
       </div>
