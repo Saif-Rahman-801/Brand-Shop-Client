@@ -1,11 +1,38 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthProvider } from "../../Context/AuthContext";
 
 const Register = () => {
+  const { handleEmailPassReg, handleProfileUpdate } = useContext(AuthProvider);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
+    const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
+    console.log(email, password, name);
+
+    // register with email pass
+    handleEmailPassReg(email, password)
+      .then((userCredential) => {
+        // Signed up
+        const user = userCredential.user;
+        console.log(user);
+        handleProfileUpdate(user, name)
+          .then(() => {
+            // Profile updated!
+            // ...
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+          form.reset()
+      })
+      .catch((error) => {
+        console.log(error);
+        // ..
+      });
   };
 
   return (
@@ -14,6 +41,20 @@ const Register = () => {
         <div className="bg-white p-8 rounded shadow-md max-w-md w-full">
           <h2 className="text-2xl font-semibold mb-6">Please Register </h2>
           <form onSubmit={handleSubmit}>
+            <div className="mb-4">
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-600"
+              >
+                Name
+              </label>
+              <input
+                type="name"
+                id="name"
+                name="name"
+                className="mt-1 p-2 block w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+              />
+            </div>
             <div className="mb-4">
               <label
                 htmlFor="email"
