@@ -17,7 +17,7 @@ const BrandProduct = () => {
       </div>
       <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
         {products.map((product) => (
-          <CardProduct key={product.identifier} product={product} />
+          <CardProduct BrandProducts={BrandProducts} key={product.identifier} product={product} />
         ))}
       </div>
     </div>

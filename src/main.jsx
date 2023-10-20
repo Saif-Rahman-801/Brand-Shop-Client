@@ -14,6 +14,7 @@ import Register from "./Components/Register/Register.jsx";
 import Blog from "./Components/Blog/Blog.jsx";
 import BrandProduct from "./Components/BrandProduct/BrandProduct.jsx";
 import AuthContext from "./Context/AuthContext.jsx";
+import ProductDetails from "./Components/BrandProduct/ProductDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,11 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:5000/brand/${params.id}`),
         element: <BrandProduct />,
+      },
+      {
+        path: "/products/:id",
+        loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`),
+        element: <ProductDetails />
       },
     ],
   },

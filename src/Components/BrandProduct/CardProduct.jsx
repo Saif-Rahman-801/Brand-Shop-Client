@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
-const CardProduct = ({ product }) => {
-  const { productName, img, type, price, rating } = product;
+import { Link } from "react-router-dom";
+const CardProduct = ({ product, BrandProducts }) => {
+  const { productName, img, type, price, rating, id } = product;
   return (
     <div>
       <div className="card bg-base-100 shadow-xl h-[400px]">
@@ -16,7 +17,9 @@ const CardProduct = ({ product }) => {
           <p>Price: {price} </p>
           <p>Rating: {rating} </p>
           <div className="card-actions justify-end">
+            <Link to={`/products/${id}`}> 
             <button className="btn btn-primary">Details</button>
+            </Link>
             <button className="btn btn-primary">update</button>
           </div>
         </div>
@@ -26,7 +29,14 @@ const CardProduct = ({ product }) => {
 };
 
 CardProduct.propTypes = {
-  product: PropTypes.any,
-};
+  BrandProducts: PropTypes.any,
+  product: PropTypes.shape({
+    img: PropTypes.any,
+    price: PropTypes.any,
+    productName: PropTypes.any,
+    rating: PropTypes.any,
+    type: PropTypes.any
+  })
+}
 
 export default CardProduct;
