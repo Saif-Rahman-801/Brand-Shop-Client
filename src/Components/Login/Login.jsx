@@ -1,12 +1,29 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthProvider } from "../../Context/AuthContext";
+import { toast } from "react-toastify";
 
 const Login = () => {
+  const { handleSignIn, googleSubmit } = useContext(AuthProvider);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
+    handleSignIn(email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        toast.success("Login successful");
+        console.log(user);
+        form.reset();
+        // ...
+      })
+      .catch((error) => {
+        toast.error(error);
+      });
   };
 
   return (
