@@ -4,9 +4,9 @@ import { AuthProvider } from "../../Context/AuthContext";
 import { Navigate } from "react-router-dom";
 
 const PrivateRoute = ({ children }) => {
-  const { user } = useContext(AuthProvider);
+  const { user, loading } = useContext(AuthProvider);
 
-  if (!user) {
+  if (loading) {
     return <span className="loading loading-ball loading-lg"></span>;
   }
 

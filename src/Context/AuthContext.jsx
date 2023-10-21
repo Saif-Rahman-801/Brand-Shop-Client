@@ -18,12 +18,15 @@ const provider = new GoogleAuthProvider();
 
 const AuthContext = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true)
 
   const handleEmailPassReg = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const handleProfileUpdate = (user, userName, image) => {
+    setLoading(true);
     return updateProfile(user, {
       displayName: userName,
       photoURL: image,
@@ -31,21 +34,26 @@ const AuthContext = ({ children }) => {
   };
 
   const handleLogOut = () => {
+    setLoading(true);
     return signOut(auth);
   };
 
   const googleSubmit = () => {
+    setLoading(true);
     return signInWithPopup(auth, provider);
   };
 
   const handleSignIn = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   useEffect(() => {
+    
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log(currentUser);
       setUser(currentUser);
+      setLoading(false);
     });
     return () => {
       unsubscribe;
@@ -59,6 +67,7 @@ const AuthContext = ({ children }) => {
     googleSubmit,
     handleSignIn,
     user,
+    loading
   };
 
   return (
