@@ -8,7 +8,6 @@ const BrandProduct = () => {
   const { products } = BrandProducts;
   return (
     <div>
-      <h2>Products Coming</h2>
       <div>
         <ProductSlider products={products} />
         {/* {products.map((product) => (

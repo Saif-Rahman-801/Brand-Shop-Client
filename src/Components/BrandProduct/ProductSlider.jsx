@@ -6,7 +6,8 @@ const ProductSlider = ({ products }) => {
   return (
     <div>
       {products.map((product) => (
-        <div key={product.id}>{product.productName}, {product.img} </div>
+        <img src={product.img} alt="" key={product.id} />
+        // <img key={product.id}>{product.img} </img>
       ))}
     </div>
   );
