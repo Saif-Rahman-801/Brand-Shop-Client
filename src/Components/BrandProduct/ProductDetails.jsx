@@ -13,7 +13,7 @@ const ProductDetails = () => {
       productPrice,
     };
     fetch(
-      "https://brand-shop-backend-2avp4jjqh-saifrahmans-projects.vercel.app/cart",
+      "https://brand-shop-backend-oalq0ch89-saifrahmans-projects.vercel.app/cart",
       {
         method: "POST",
         headers: {
