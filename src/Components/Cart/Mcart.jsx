@@ -5,10 +5,7 @@ const Mcart = ({ cart, dataCart, setDataCart }) => {
 
   const onDelete = (id) => {
     console.log(id);
-    fetch(
-      `https://brand-shop-backend-21hxsm4ec-saifrahmans-projects.vercel.app/cart/${id}`,
-      { method: "DELETE" }
-    )
+    fetch(`http://localhost:5000/cart/${id}`, { method: "DELETE" })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

@@ -86,9 +86,9 @@ const AddProducts = () => {
               className="mt-1 p-2 w-full border rounded-md focus:ring-indigo-500 focus:border-indigo-500"
             >
               <option value="">Select Type</option>
-              <option value="phone">Phone</option>
-              <option value="computer">Computer</option>
-              <option value="headphone">Headphone</option>
+              <option value="Coke">Coke </option>
+              <option value="Burger">Burger</option>
+              <option value="Pizza">Pizza</option>
               {/* Add more options as needed */}
             </select>
           </div>

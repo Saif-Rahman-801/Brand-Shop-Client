@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 const BrandCards = ({ data }) => {
   const { title, img, _id } = data;
   return (
+    // to={`/brand/${_id}`}
     <Link to={`/brand/${_id}`}>
       <div>
         <div className="max-w-xs bg-white shadow-lg rounded-lg overflow-hidden m-4 h-64">

@@ -12,16 +12,13 @@ const ProductDetails = () => {
       productName,
       productPrice,
     };
-    fetch(
-      "https://brand-shop-backend-21hxsm4ec-saifrahmans-projects.vercel.app/cart",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(productInfo),
-      }
-    )
+    fetch("http://localhost:5000/cart", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(productInfo),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
