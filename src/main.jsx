@@ -18,6 +18,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Cart from "./Components/Cart/Cart.jsx";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute.jsx";
+import Update from "./Components/UpdateForm/Update.jsx";
 
 const router = createBrowserRouter([
   {
@@ -72,6 +73,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <ProductDetails />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/update",
+        element: (
+          <PrivateRoute>
+            <Update />
           </PrivateRoute>
         ),
       },

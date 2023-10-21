@@ -17,7 +17,7 @@ const CardProduct = ({ product }) => {
             <Link to={`/products/${id}`}>
               <button className="btn btn-primary">Details</button>
             </Link>
-            <Link>
+            <Link to="/update" >
             <button className="btn btn-primary">update</button>
             </Link>
           </div>
