@@ -117,9 +117,11 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           {user ? (
-            <div className="flex items-center gap-3">
+            <div className="flex flex-col md:flex-row items-center gap-3">
+              <div>
               <img className="w-[30px] rounded-full" src={user.photoURL} alt="" />
               <p>{user.displayName}</p>
+              </div>
               <button className="btn" onClick={onLogOut}>
                 Log out
               </button>
