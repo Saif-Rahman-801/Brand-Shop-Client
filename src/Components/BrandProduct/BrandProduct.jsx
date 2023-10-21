@@ -8,11 +8,8 @@ const BrandProduct = () => {
   const { products } = BrandProducts;
   return (
     <div>
-      <div>
+      <div className="container mx-auto my-10 w-[400px]">
         <ProductSlider products={products} />
-        {/* {products.map((product) => (
-          <ProductSlider key={product.id} product={product} />
-        ))} */}
       </div>
       <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
         {products.map((product) => (
