@@ -17,6 +17,7 @@ import ProductDetails from "./Components/BrandProduct/ProductDetails.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Cart from "./Components/Cart/Cart.jsx";
+import PrivateRoute from "./Components/PrivateRoute/PrivateRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -27,16 +28,30 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch("http://localhost:5000/brands"),
+        loader: () =>
+          fetch(
+            "https://brand-shop-backend-21hxsm4ec-saifrahmans-projects.vercel.app/brands"
+          ),
       },
       {
         path: "/addProducts",
-        element: <AddProducts />,
+        element: (
+          <PrivateRoute>
+            <AddProducts />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/cart",
-        element: <Cart />,
-        loader: () => fetch("http://localhost:5000/cart"),
+        element: (
+          <PrivateRoute>
+            <Cart />
+          </PrivateRoute>
+        ),
+        loader: () =>
+          fetch(
+            "https://brand-shop-backend-21hxsm4ec-saifrahmans-projects.vercel.app/cart"
+          ),
       },
       {
         path: "/login",
@@ -53,14 +68,22 @@ const router = createBrowserRouter([
       {
         path: "/brand/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/brand/${params.id}`),
+          fetch(
+            `https://brand-shop-backend-21hxsm4ec-saifrahmans-projects.vercel.app/brand/${params.id}`
+          ),
         element: <BrandProduct />,
       },
       {
         path: "/products/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
-        element: <ProductDetails />,
+          fetch(
+            `https://brand-shop-backend-21hxsm4ec-saifrahmans-projects.vercel.app/products/${params.id}`
+          ),
+        element: (
+          <PrivateRoute>
+            <ProductDetails />
+          </PrivateRoute>
+        ),
       },
     ],
   },

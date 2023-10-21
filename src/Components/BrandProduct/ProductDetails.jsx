@@ -12,20 +12,23 @@ const ProductDetails = () => {
       productName,
       productPrice,
     };
-    fetch("http://localhost:5000/cart", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(productInfo),
-    })
+    fetch(
+      "https://brand-shop-backend-21hxsm4ec-saifrahmans-projects.vercel.app/cart",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(productInfo),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
-        if(data.acknowledged){
-            toast.success("Product added successfully")
+        console.log(data);
+        if (data.acknowledged) {
+          toast.success("Product added successfully");
         }
-    });
+      });
   };
 
   return (
@@ -33,9 +36,6 @@ const ProductDetails = () => {
       <div className="text-center">
         <h2 className="font-medium text-xl">{data.description}</h2>
         <p className="mt-3 font-semibold">Price: {data.price} </p>
-        <button className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-5">
-          Update
-        </button>
         <button
           onClick={handleAddToCart}
           className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-5 mx-5"

@@ -1,3 +1,14 @@
+# Foodism Features
+
+- You can explore Different Different food brands in One application.
+- You Can explore Different products of different food brands in one application.
+- You Can see details of every products
+- You can Buy Product
+- You can add your own brands product
+
+# Live site link
+- https://foodism-ce81e.web.app
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
