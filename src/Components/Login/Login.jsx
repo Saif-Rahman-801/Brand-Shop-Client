@@ -26,6 +26,16 @@ const Login = () => {
       });
   };
 
+  const onGoogleLogin = () => {
+    googleSubmit().then((result) => {
+        console.log(result.user)
+        toast.success("Login Successful")
+      })
+      .catch((error) => {
+        toast.error(error)
+        console.log(error)});
+  }
+
   return (
     <div>
       <div className="bg-gray-100 h-screen flex items-center justify-center">
@@ -69,6 +79,7 @@ const Login = () => {
               Login
             </button>
             <button
+            onClick={onGoogleLogin}
               type="submit"
               className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-700 focus:outline-none focus:ring focus:border-blue-300 my-3"
             >

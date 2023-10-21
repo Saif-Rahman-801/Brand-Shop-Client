@@ -9,8 +9,13 @@ const Register = () => {
 
   const handleGoogleSubmit = () => {
     googleSubmit()
-      .then((result) => console.log(result.user))
-      .catch((error) => console.log(error));
+      .then((result) => {
+        console.log(result.user)
+        toast.success("Registration Successful")
+      })
+      .catch((error) => {
+        toast.error(error)
+        console.log(error)});
   };
 
   const handleSubmit = (e) => {
@@ -56,6 +61,7 @@ const Register = () => {
         form.reset();
       })
       .catch((error) => {
+        toast.error(error)
         console.log(error);
         // ..
       });
