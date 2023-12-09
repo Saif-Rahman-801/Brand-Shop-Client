@@ -9,6 +9,9 @@
 # Live site link
 - https://foodism-ce81e.web.app
 
+# Server side repo
+- https://github.com/Saif-Rahman-801/Brand-Shop-Server
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
