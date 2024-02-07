@@ -29,10 +29,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () =>
-          fetch(
-            "https://brand-shop-backend-oalq0ch89-saifrahmans-projects.vercel.app/brands"
-          ),
+        loader: () => fetch("https://brand-shop-backend-phi.vercel.app/brands"),
       },
       {
         path: "/addProducts",
@@ -49,10 +46,7 @@ const router = createBrowserRouter([
             <Cart />
           </PrivateRoute>
         ),
-        loader: () =>
-          fetch(
-            "https://brand-shop-backend-oalq0ch89-saifrahmans-projects.vercel.app/cart"
-          ),
+        loader: () => fetch("https://brand-shop-backend-phi.vercel.app/cart"),
       },
       {
         path: "/login",
@@ -69,16 +63,14 @@ const router = createBrowserRouter([
       {
         path: "/brand/:id",
         loader: ({ params }) =>
-          fetch(
-            `https://brand-shop-backend-oalq0ch89-saifrahmans-projects.vercel.app/brand/${params.id}`
-          ),
+          fetch(`https://brand-shop-backend-phi.vercel.app/brand/${params.id}`),
         element: <BrandProduct />,
       },
       {
         path: "/products/:id",
         loader: ({ params }) =>
           fetch(
-            `https://brand-shop-backend-oalq0ch89-saifrahmans-projects.vercel.app/products/${params.id}`
+            `https://brand-shop-backend-phi.vercel.app/products/${params.id}`
           ),
         element: (
           <PrivateRoute>
