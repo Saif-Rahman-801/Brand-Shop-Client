@@ -6,7 +6,8 @@
 - You can Buy Product
 - You can add your own brands product
 
-
+# Live 
+- https://resilient-crepe-38edae.netlify.app
 
 # Server side repo
 - https://github.com/Saif-Rahman-801/Brand-Shop-Server
